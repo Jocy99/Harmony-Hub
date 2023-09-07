@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS harmony_db;
+CREATE DATABASE harmony_db;
