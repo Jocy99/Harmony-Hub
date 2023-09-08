@@ -9,7 +9,7 @@ let playlist = ""
 
 
 let fetchSongs = async function (genreSearch){
-const url = 'https://deezerdevs-deezer.p.rapidapi.com/playlist/' + playlist;
+const url = 'https://deezerdevs-deezer.p.rapidapi.com/playlist/' + unitedKingdom;
 const options = {
 	method: 'GET',
 	headers: {
@@ -20,10 +20,11 @@ const options = {
 try {
 	const response = await fetch(url, options);
 	const songInfo = await response.json();
-    const songTopTen = songInfo.slice(0,10);
-	console.log(songTopTen);
+	const top10Songs = songInfo.tracks.data.slice(0, 10);
+	console.log(top10Songs);
 } catch (error) {
 	console.error(error);
 }
 };
 
+fetchSongs();
