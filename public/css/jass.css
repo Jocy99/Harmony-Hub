@@ -383,6 +383,7 @@ h2 {
 
 h3 {
   font-size: 1.75rem;
+  color: red;
 }
 
 h4 {
@@ -428,7 +429,7 @@ a {
 }
 
 a:hover {
-  color: #065b83;
+  color: black;
   text-decoration: underline;
 }
 
@@ -1017,7 +1018,7 @@ a:hover {
 }
 
 .btn.btn-primary:hover {
-  background-color: #57779a;
+  background-color: black;
 }
 
 .btn.btn-danger {
