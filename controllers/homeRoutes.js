@@ -3,30 +3,35 @@ const { Project, User } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
-  // try {
-  //   // Get all projects and JOIN with user data
-  //   const projectData = await Project.findAll({
-  //     include: [
-  //       {
-  //         model: User,
-  //         attributes: ['name'],
-  //       },
-  //     ],
-//     });
+  try {
+    // Add playlist data here
 
-//     // Serialize data so the template can read it
-//     const projects = projectData.map((project) => project.get({ plain: true }));
+    // EXAMPLE:
+    // Get all projects and JOIN with user data
+    // const projectData = await Project.findAll({
+    //   include: [
+    //     {
+    //       model: User,
+    //       attributes: ['name'],
+    //     },
+    //   ],
+    // });
 
-//     // Pass serialized data and session flag into template
-//     res.render('homepage', {
-//       projects,
-//       logged_in: req.session.logged_in,
-//       user_name: req.session.user_name,
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
+    // Serialize data so the template can read it
+    // const projects = projectData.map((project) => project.get({ plain: true }));
+
+    // Pass serialized data and session flag into template
+    res.render('homepage', {
+      // projects,
+      // pass playlist object here
+      logged_in: req.session.logged_in,
+      user_name: req.session.user_name,
+    });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json(err);
+  }
+});
 
 router.get('/project/:id', async (req, res) => {
   try {
