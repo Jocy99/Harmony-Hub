@@ -7,7 +7,7 @@ const france = '1109890291'
 
 let playlist = ""
 
-
+//Add event listener to pass in the locale
 let fetchSongs = async function (genreSearch){
 const url = `/api/music/${france}`;
 
@@ -18,7 +18,7 @@ try {
 
 	songInfo.forEach((song, idx) => {
 		// render your song stuff in here...
-		
+
 	});
 } catch (error) {
 	console.error(error);
