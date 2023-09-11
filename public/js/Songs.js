@@ -9,19 +9,17 @@ let playlist = ""
 
 
 let fetchSongs = async function (genreSearch){
-const url = 'https://deezerdevs-deezer.p.rapidapi.com/playlist/' + unitedKingdom;
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'e7c2031dffmsha123315849343c2p1ba5fdjsn2ad30982319f',
-		'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
-	}
-};
+const url = `/api/music/${france}`;
+
 try {
-	const response = await fetch(url, options);
+	const response = await fetch(url);
 	const songInfo = await response.json();
-	const top10Songs = songInfo.tracks.data.slice(0, 10);
-	console.log(top10Songs);
+	console.log(songInfo);
+
+	songInfo.forEach((song, idx) => {
+		// render your song stuff in here...
+		
+	});
 } catch (error) {
 	console.error(error);
 }
