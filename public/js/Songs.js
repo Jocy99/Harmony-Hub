@@ -8,7 +8,7 @@ const top10Container = document.getElementById('Top10Container')
 
 let playlist = ""
 
-//Add event listener to pass in the locale
+//Populate Table
 let fetchSongs = async function (genreSearch){
 const url = `/api/music/${france}`;
 
@@ -38,9 +38,23 @@ let songList = [];
 
 	});
 	top10Container.innerHTML= songList;
+
+	const saveButtons = document.querySelectorAll('.savebtn');
+	saveButtons.forEach((button) => {
+		button.addEventListener('click', (event) => {
+			const title = event.target.getAttribute('data-title');
+			const artistName = event.target.getAttribute('data-artist');
+			const albumTitle = event.target.getAttribute('data-album');
+			saveSong(title, artistName, albumTitle);
+		});
+
+
+	});
 } catch (error) {
 	console.error(error);
 }
 };
+
+
 
 fetchSongs();
