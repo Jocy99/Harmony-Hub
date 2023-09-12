@@ -4,26 +4,42 @@ const unitedKingdom = '1111142221'
 const world = '3155776842'
 const mexico = '1111142361'
 const france = '1109890291'
+const top10Conatiner = document.getElementById('Top10Container')
 
 let playlist = ""
 
-
+//Add event listener to pass in the locale
 let fetchSongs = async function (genreSearch){
-const url = 'https://deezerdevs-deezer.p.rapidapi.com/playlist/' + playlist;
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'e7c2031dffmsha123315849343c2p1ba5fdjsn2ad30982319f',
-		'X-RapidAPI-Host': 'deezerdevs-deezer.p.rapidapi.com'
-	}
-};
+const url = `/api/music/${france}`;
+
 try {
-	const response = await fetch(url, options);
+	const response = await fetch(url);
 	const songInfo = await response.json();
-    const songTopTen = songInfo.slice(0,10);
-	console.log(songTopTen);
+	console.log(songInfo);
+let songList = [];
+	songInfo.forEach((song, idx) => {
+		// render your song stuff in here...
+		const songDetailRow = `
+		<div>
+			<table>
+				<tbody>
+					<tr>
+						<td>${song.title}</td>
+						<td>${song.artist.name}</td>
+						<td>${song.album.title}</td>
+					</tr>
+				</tbody>
+			</table>
+		<div>
+		`
+		console.log(top10Conatiner)
+		songList.push(songDetailRow)
+
+	});
+	top10Conatiner.innerHTML= songList;
 } catch (error) {
 	console.error(error);
 }
 };
 
+fetchSongs();
