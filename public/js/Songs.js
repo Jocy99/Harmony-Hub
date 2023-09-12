@@ -4,7 +4,7 @@ const unitedKingdom = '1111142221'
 const world = '3155776842'
 const mexico = '1111142361'
 const france = '1109890291'
-const top10Conatiner = document.getElementById('Top10Container')
+const top10Container = document.getElementById('Top10Container')
 
 let playlist = ""
 
@@ -36,7 +36,7 @@ let songList = [];
 		songList.push(songDetailRow)
 
 	});
-	top10Conatiner.innerHTML= songList;
+	top10Container.innerHTML= songList;
 } catch (error) {
 	console.error(error);
 }
