@@ -58,4 +58,15 @@ router.post('/logout', (req, res) => {
   }
 });
 
+router.post('/addSong', (req, res) => {
+  console.log("Incoming Data: ", req.body);
+
+  // What should we query our DB for FIRST(?)
+  // We should have the USER_ID from the REQUEST SESSION OBJECT
+  // --> Query for the current USER (based on the req.session.userId)
+  // --> update sequelize method (song data --> User.playlist)
+  //build playlist under USERs.js
+  res.redirect('/')  // redirect to endpoint that present VIEW
+})
+
 module.exports = router;

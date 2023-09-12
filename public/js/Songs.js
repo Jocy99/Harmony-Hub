@@ -5,6 +5,7 @@ const world = '3155776842';
 const mexico = '1111142361';
 const france = '1109890291';
 const top10Container = document.getElementById('Top10Container');
+const top10songs = document.getElementById('topten');
 const genreDropdown = document.getElementById('genreDropdown');
 //Add event listener to picklist
 //figure out how to put actual id not the string when selecting location
@@ -23,32 +24,60 @@ let fetchSongs = async function (genreSearch) {
     let songList = [];
     songInfo.forEach((song, idx) => {
       // render your song stuff in here...
-      const songDetailRow = `
+   /*   const songDetailRow = `
 		<div>
 			<table>
 				<tbody>
 					<tr>
-						<td>${song.title}</td>
-						<td>${song.artist.name}</td>
-						<td>${song.album.title}</td>
+						<td data-title=${song.title}>${song.title}</td>
+						<td data-artist=${song.artist.name}>${song.artist.name}</td>
+						<td data-album=${song.album.title}>${song.album.title}</td>
 						<td><button class="savebtn">SAVE</button></td>
 					</tr>
 				</tbody>
 			</table>
 		<div>
-		`;
-      console.log(top10Container);
+		`; */
+      const songDetailRow = `
+<tr>
+  <td data-title=${song.title}>${song.title}</td>
+  <td data-artist=${song.artist.name}>${song.artist.name}</td>
+  <td data-album=${song.album.title}>${song.album.title}</td>
+  <td><button class="savebtn">SAVE</button></td>
+</tr>
+`;
+     // console.log(top10songs);
       songList.push(songDetailRow);
     });
-    top10Container.innerHTML = songList;
+
+    console.log("All Songs: ", songList);
+   // top10Container.innerHTML = songList;
+    top10songs.innerHTML = songList;
 
     const saveButtons = document.querySelectorAll('.savebtn');
     saveButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
-        const title = event.target.getAttribute('data-title');
+        console.log("Target: ", event.target);
+   
+        console.log("Target: ", event.target.parentElement);
+    
+        console.log("Target: ", event.target.parentElement.previousElementSibling);
+        console.log("Target: ", event.target.parentElement.previousElementSibling.value);
+
+       // console.log("Target: ", event.target.parentElement).siblings('data-title');
+       // const title = event.target.getAttribute('data-title');
+        const title = event.target.parentElement.previousElementSibling.value
         const artistName = event.target.getAttribute('data-artist');
         const albumTitle = event.target.getAttribute('data-album');
-        saveSong(title, artistName, albumTitle);
+        console.log("Data: ", title, artistName, albumTitle);
+        // save the selected song to the Current Users Playlist
+        // What should be our ENDPOIHT and HTTP METHOD (Data if needed) 
+        fetch('/api/users/addSong', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json'},
+          body: JSON.stringify({ title, artistName, albumTitle })
+        })
+        // saveSong(title, artistName, albumTitle);
       });
     });
   } catch (error) {
