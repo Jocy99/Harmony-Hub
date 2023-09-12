@@ -27,6 +27,7 @@ let songList = [];
 						<td>${song.title}</td>
 						<td>${song.artist.name}</td>
 						<td>${song.album.title}</td>
+						<td><button class="savebtn">SAVE</button></td>
 					</tr>
 				</tbody>
 			</table>
