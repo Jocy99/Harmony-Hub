@@ -32,7 +32,7 @@ let songList = [];
 			</table>
 		<div>
 		`
-		console.log(top10Conatiner)
+		console.log(top10Container)
 		songList.push(songDetailRow)
 
 	});
