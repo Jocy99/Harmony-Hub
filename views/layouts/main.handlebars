@@ -6,6 +6,7 @@
   <title>Harmony Hub</title>
   <link rel='stylesheet' href='/css/jass.css' />
   <link rel='stylesheet' href='/css/style.css' />
+  <link href="https://fonts.googleapis.com/css?family=Rock+Salt" rel="stylesheet" type="text/css" />
 
 </head>
 
@@ -31,22 +32,26 @@
       </nav>
     </header>
     <main class='container container-fluid mt-5'>
-        <select id="genreDropdown">
+      <select id="genreDropdown">
         <option value="1313621735">United States</option>
         <option value="1362508955">Japan</option>
         <option value="1111142221">United Kingdom</option>
         <option value="3155776842">World</option>
         <option value="1111142361">Mexico</option>
         <option value="1109890291">France</option>
-    </select>
+      </select>
       <div id="Top10Container">
         <div class="dataTable">
           <table>
-            <tbody id="topten"> 
-
+            <tbody id="topten">
+              <tr>
+                <th>TITLE</th>
+                <th>ARTIST</th>
+                <th>ALBUM</th>
+              </tr>
             </tbody>
           </table>
-        </div>  
+        </div>
       </div>
       <!-- Render the sub layout -->
       {{{body}}}
@@ -55,7 +60,7 @@
 
     </footer>
   </div>
- <script src="/js/songs.js"></script>
+  <script src="/js/songs.js"></script>
   <!-- Render script for logged in users only -->
   {{#if logged_in}}
   <script src='/js/logout.js'></script>
