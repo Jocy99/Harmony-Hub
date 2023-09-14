@@ -34,10 +34,6 @@ User.init(
       validate: {
         len: [8],
       },
-      playlist: {
-        type: json,
-        allowNull: true,
-      }
     },
   },
   {
