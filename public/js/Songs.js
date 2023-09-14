@@ -21,23 +21,10 @@ let fetchSongs = async function (genreSearch) {
     const response = await fetch(url);
     const songInfo = await response.json();
     console.log(songInfo);
+    top10songs.innerHTML = "";
     let songList = [];
     songInfo.forEach((song, idx) => {
-      // render your song stuff in here...
-      /*   const songDetailRow = `
-       <div>
-         <table>
-           <tbody>
-             <tr>
-               <td data-title=${song.title}>${song.title}</td>
-               <td data-artist=${song.artist.name}>${song.artist.name}</td>
-               <td data-album=${song.album.title}>${song.album.title}</td>
-               <td><button class="savebtn">SAVE</button></td>
-             </tr>
-           </tbody>
-         </table>
-       <div>
-       `; */
+
       let tr = document.createElement('tr');
       let titleTd = document.createElement('td');
       let artistTd = document.createElement('td');
@@ -61,18 +48,18 @@ let fetchSongs = async function (genreSearch) {
       tr.appendChild(albumTd);
       tr.appendChild(savebtnTd);
       const songDetailRow = `
-<tr>
-  <td data-title=${song.title}>${song.title}</td>
-  <td data-artist=${song.artist.name}>${song.artist.name}</td>
-  <td data-album=${song.album.title}>${song.album.title}</td>
-  <td><button class="savebtn">SAVE</button></td>
-</tr>
+// <tr>
+//   <td data-title=${song.title}>${song.title}</td>
+//   <td data-artist=${song.artist.name}>${song.artist.name}</td>
+//   <td data-album=${song.album.title}>${song.album.title}</td>
+//   <td><button class="savebtn">SAVE</button></td>
+// </tr>
 `;
       // console.log(top10songs);
       top10songs.appendChild(tr);
     });
 
-    console.log("All Songs: ", songList);
+    // console.log("All Songs: ", songList);
     // top10Container.innerHTML = songList;
 
     const saveButtons = document.querySelectorAll('.savebtn');
