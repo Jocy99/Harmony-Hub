@@ -1,4 +1,4 @@
-const { Model, DataTypes } = require('sequelize');
+const { Model, DataTypes, json } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
@@ -34,6 +34,10 @@ User.init(
       validate: {
         len: [8],
       },
+      playlist: {
+        type: json,
+        allowNull: true,
+      }
     },
   },
   {

@@ -31,9 +31,9 @@ let fetchSongs = async function (genreSearch) {
       let albumTd = document.createElement('td');
       let savebtnTd = document.createElement('td');
       let savebtnEl = document.createElement('button');
-      titleTd.setAttribute('data-title', song.title)
-      artistTd.setAttribute('data-artist', song.artist.name)
-      albumTd.setAttribute('data-album', song.album.title)
+      savebtnEl.setAttribute('data-title', song.title)
+      savebtnEl.setAttribute('data-artist', song.artist.name)
+      savebtnEl.setAttribute('data-album', song.album.title)
       titleTd.setAttribute('class', 'songItem')
       artistTd.setAttribute('class', 'songItem')
       albumTd.setAttribute('class', 'songItem')
@@ -65,16 +65,11 @@ let fetchSongs = async function (genreSearch) {
     const saveButtons = document.querySelectorAll('.savebtn');
     saveButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
-        console.log("Target: ", event.target);
-
-        console.log("Target: ", event.target.parentElement);
-
-        console.log("Target: ", event.target.parentElement.previousElementSibling);
-        console.log("Target: ", event.target.parentElement.previousElementSibling.value);
+      console.log(event.target)
 
         // console.log("Target: ", event.target.parentElement).siblings('data-title');
         // const title = event.target.getAttribute('data-title');
-        const title = event.target.parentElement.previousElementSibling.value
+        const title = event.target.getAttribute('data-title')
         const artistName = event.target.getAttribute('data-artist');
         const albumTitle = event.target.getAttribute('data-album');
         console.log("Data: ", title, artistName, albumTitle);
