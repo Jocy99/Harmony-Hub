@@ -1,6 +1,7 @@
 const { Model, DataTypes, json } = require('sequelize');
 const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
+const Playlist = require('./Playlist');
 
 class User extends Model {
   checkPassword(loginPw) {
@@ -46,6 +47,11 @@ User.init(
         updatedUserData.password = await bcrypt.hash(updatedUserData.password, 10);
         return updatedUserData;
       },
+      afterCreate: async (newUserData) => {
+        Playlist.create({
+          user_id: newUserData.id
+        });
+      }
     },
     sequelize,
     timestamps: false,
