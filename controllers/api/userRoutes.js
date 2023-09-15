@@ -61,6 +61,7 @@ router.post('/logout', (req, res) => {
   }
 });
 
+// add song to the user playlist
 router.post('/addSong', async (req, res) => {
   console.log("Incoming Data: ", req.body);
 
@@ -83,6 +84,26 @@ router.post('/addSong', async (req, res) => {
 
   res.status(200).json(playlistSong);
 })
+
+//  delete song from playlist
+router.delete('/song/:id', async (req, res) => {
+  try {
+    const songData = Song.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
+  
+    if (!songData) {
+      res.status(404).json({ message: "Song does not exist!"});
+    }
+  
+    res.status(200).json(songData);
+  } catch (err) {
+    res.status(500).json(err);
+  }
+  
+});
 
 router.get('/', async (req,res) =>{
 
