@@ -10,17 +10,17 @@ router.get('*', (req, res) =>
   )
 );
 
-// router.get('/', async (req, res) => {
-//   try {
-//     // Get all projects and JOIN with user data
-//     const projectData = await Project.findAll({
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
+router.get('/', async (req, res) => {
+  try {
+    // Get all projects and JOIN with user data
+    const projectData = await Project.findAll({
+      include: [
+        {
+          model: User,
+          attributes: ['name'],
+        },
+      ],
+    });
     
     // Serialize data so the template can read it
     // const projects = projectData.map((project) => project.get({ plain: true }));
@@ -35,19 +35,19 @@ router.get('*', (req, res) =>
     console.error(err);
     res.status(500).json(err);
   }
-});
+);
 
 //replace with database queries
-const userPlaylists = {
-  // example user playlists, with user IDs as keys
-  'user123': [
-    { id: 'playlist1', name: 'playlist 1', songs: [{ title: 'Song1', artist: 'Artist1' }] },
-    { id: 'playlist2', name: 'playlist 2', songs: [{ title: 'Song2', artist: 'Artist2' }] },
-  ],
-  'user456': [
-    { id: 'playlist3', name: 'Another Playlist', songs: [{ title: 'Song3', artist: 'Artist3' }] },
-  ],
-};
+// const userPlaylists = {
+//   // example user playlists, with user IDs as keys
+//   'user123': [
+//     { id: 'playlist1', name: 'playlist 1', songs: [{ title: 'Song1', artist: 'Artist1' }] },
+//     { id: 'playlist2', name: 'playlist 2', songs: [{ title: 'Song2', artist: 'Artist2' }] },
+//   ],
+//   'user456': [
+//     { id: 'playlist3', name: 'Another Playlist', songs: [{ title: 'Song3', artist: 'Artist3' }] },
+//   ],
+// };
 
 // Route to get a user's playlists
 router.get('/api/user/playlists/:userId', async (req, res) => {

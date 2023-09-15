@@ -5,6 +5,9 @@ const withAuth = require('../../utils/auth');
 router.post('/', withAuth, async (req, res) => {
   try {
     const newProject = await Project.create({
+      // req.body is the user response
+      // routes connect to models
+      // controller is the middle man between front end and back end
       ...req.body,
       user_id: req.session.user_id,
     });
