@@ -65,7 +65,10 @@ let fetchSongs = async function (genreSearch) {
     const saveButtons = document.querySelectorAll('.savebtn');
     saveButtons.forEach((button) => {
       button.addEventListener('click', (event) => {
-      console.log(event.target)
+        console.log(event.target)
+
+        // changes color once save button is clicked
+        button.setAttribute("style", "background-color:blue");
 
         // console.log("Target: ", event.target.parentElement).siblings('data-title');
         // const title = event.target.getAttribute('data-title');

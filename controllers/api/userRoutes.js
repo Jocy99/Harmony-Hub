@@ -83,6 +83,7 @@ router.post('/addSong', async (req, res) => {
   console.log('user playlist', userPlaylist);
 
   res.status(200).json(playlistSong);
+
 })
 
 //  delete song from playlist
@@ -105,11 +106,4 @@ router.delete('/song/:id', async (req, res) => {
   
 });
 
-router.get('/', async (req,res) =>{
-
-  const playlistData = await Song.findAll({
-  })
-  console.log("Playlist Data", playlistData)
-}
-);
 module.exports = router;
