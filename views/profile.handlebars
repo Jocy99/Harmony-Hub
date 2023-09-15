@@ -20,11 +20,11 @@
     </tr>
   </thead>
   <tbody>
-    {{#each song}}
+    {{#each playlist.songs}}
       <tr>
-        <td>{{playlist.title}}</td>
-        <td>{{playlist.artist}}</td>
-        <td>{{playlist.album}}</td>
+        <td>{{title}}</td>
+        <td>{{artist}}</td>
+        <td>{{album}}</td>
         <td>
           <form method="POST" action="/deleteSong/{{this.id}}">
             <button type="submit">Delete</button>
